@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
+import styled from 'styled-components';
+
+import background from './img/bg-recarga-phone.png'
+
+const DivContainerRecharge = styled.div`
+  background-image: url('${background}');
+  background-size: cover;
+  background-position: center;
+`;
 
 class ContainerRecharge extends Component {
   render() {
     return (
-      <div className='container-recharge'>
+      <DivContainerRecharge>
         {this.props.children}
-      </div>
+      </DivContainerRecharge>
     )
   }
 }

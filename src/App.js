@@ -1,38 +1,65 @@
-import React from 'react';
+import React, { Component } from 'react'
+import AppContent from './components/AppContent'
+import axios from 'axios';
 
-import ContainerPromo from './components/layout/ContainerPromo'
-import ContainerRecharge from './components/layout/ContainerRecharge'
+class App extends Component {
+  constructor () {
+    super()
+    this.state = {
+      recarga: []
+    }
+  }
+ 
+  getRecarga(type){
+    return(e) => {
+    axios.get(`https://tidal-hearing.glitch.me/${type}`)
+    .then((result)=>{
+      const carga = result.data;
+      this.setState({
+        [type]: carga.map((repo) => ({
+          valor: repo.amount,
+          bonus: repo.bonus_amount
+        }))
+      })
+    })
+  }
+  }
 
-import CardSva from './components/CardSva'
-import CardRechard from './components/CardRechard'
-import Header from './components/Header'
-import Buttons from './components/Buttons'
-
-function App() {
-  return (
-    <div className='App'>
-      <ContainerRecharge>
-        <div className="main">
-          <Header />
-          <div className="card-grid-recharge">
-            <CardRechard />
-            <CardRechard />
+  getDados(type){
+    return(e) => {
+    axios.get(`https://tidal-hearing.glitch.me/${type}`)
+    .then((result)=>{
+      const carga = result.data;
+      this.setState({
+        [type]: carga.map((repo) => ({
+          valor: repo.gb_amount,
+          bonus: 'Redes sociais ilimitadas'
+        }))
+      })
+    })
+  }
+  }
   
-          </div>
-        </div>
-        <div className="buttons-grid">
-          <Buttons />
-          <Buttons />
-        </div>
-      </ContainerRecharge>
-      <ContainerPromo>
-        <CardSva />
-        <CardSva />
-        <CardSva />
-        <CardSva />
-      </ContainerPromo>
-    </div>
-  );
+  // componentDidMount(){
+  //   axios.get(`https://tidal-hearing.glitch.me/recarga`)
+  //   .then((result)=>{
+  //     const carga = result.data;
+  //     this.setState({
+  //       recarga: carga.map((repo) => ({
+  //         valor: repo.amount,
+  //         bonus: repo.bonus_amount
+  //       }))
+  //     })
+  //   })
+  // }
+  render(){
+    return  <AppContent  
+              recarga={this.state.recarga} 
+              getRecarga={this.getRecarga('recarga')} 
+              getDados={this.getDados('dados')} 
+
+            />  
+  }
 }
 
 export default App;
