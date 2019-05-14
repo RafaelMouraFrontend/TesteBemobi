@@ -44,7 +44,7 @@ const DivApp = styled.div `
   margin: 0 auto;
 `;
 
-const AppContent = ({recarga, getRecarga, getDados}) => (
+const AppContent = ({recarga, sva, getRecarga, getDados}) => (
     <DivApp>
     <GlobalStyle />
       <ContainerRecharge>
@@ -62,10 +62,10 @@ const AppContent = ({recarga, getRecarga, getDados}) => (
         </ButtonsGrid>
       </ContainerRecharge>
       <ContainerPromo>
-        <CardSva />
-        <CardSva />
-        <CardSva />
-        <CardSva />
+      {sva.map((repo, index)=>(
+        <CardSva sva={repo}  key={index}/>
+      ))}
+
       </ContainerPromo>
   </DivApp>
 )

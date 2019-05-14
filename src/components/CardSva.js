@@ -67,21 +67,21 @@ const DivSvaMainSub = styled.div `
 }
 `;
 
-const CardSva = () => (
+const CardSva = ({sva}) => (
     <DivCardSva>
       <DivSvaMain>
         <div className="box-image">
-          <img src="https://cdn.glitch.com/33b14571-87e4-48c9-b8ba-824c4228ac32%2Fdiscounts.png?1551208773014" alt=""/>
+          <img src={sva.imagem} alt={sva.description}/>
         </div>
         <div className="info">
-          <a href="https://google.com">comprar</a>
-          <p>HAPZ Descontos</p>
+          <a href="https://bemobi.com/">comprar</a>
+          <p>{sva.name}</p>
         </div>
 
       </DivSvaMain>
       <DivSvaMainSub>
-        <p className='caption'>Saraiva 10$</p>
-        <p className='sub-caption'>Curta o Som</p>
+        <p className='caption'>{sva.gain}</p>
+        <p className='sub-caption'>{sva.description}</p>
       </DivSvaMainSub>
     </DivCardSva>
 )

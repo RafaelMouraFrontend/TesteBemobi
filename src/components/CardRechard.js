@@ -51,7 +51,7 @@ const CardRechard = ({recarga}) => (
       <li>{recarga.valor}</li>
       <li>{recarga.bonus}</li>
     </ul>
-    <a href="https://google.com">Contratar</a>
+    <a href="https://bemobi.com/">Contratar</a>
   </DivCardRechard>
 )
 

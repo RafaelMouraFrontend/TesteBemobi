@@ -6,7 +6,8 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      recarga: []
+      recarga: [],
+      sva:[]
     }
   }
  
@@ -51,11 +52,25 @@ class App extends Component {
         }))
       })
     })
+    axios.get(`https://tidal-hearing.glitch.me/sva`)
+    .then((result)=>{
+      const dados = result.data;
+      this.setState({
+        sva: dados.map((repo) => ({
+          name: repo.name,
+          description: repo.description,
+          gain: repo.gain,
+          imagem: repo.image
+
+        }))
+      })
+    })
   }
   
   render(){
     return  <AppContent  
               recarga={this.state.recarga}
+              sva={this.state.sva}
               getRecarga={this.getRecarga('recarga')} 
               getDados={this.getDados('dados')} 
             />  
