@@ -16,9 +16,9 @@ class App extends Component {
     .then((result)=>{
       const carga = result.data;
       this.setState({
-        [type]: carga.map((repo) => ({
-          valor: repo.amount,
-          bonus: repo.bonus_amount
+        recarga: carga.map((repo) => ({
+          valor: `R$${repo.amount}`,
+          bonus: `E ganha ${repo.bonus_amount} de bônus`
         }))
       })
     })
@@ -31,8 +31,8 @@ class App extends Component {
     .then((result)=>{
       const carga = result.data;
       this.setState({
-        [type]: carga.map((repo) => ({
-          valor: repo.gb_amount,
+        recarga: carga.map((repo) => ({
+          valor: `${repo.gb_amount}GB`,
           bonus: 'Redes sociais ilimitadas'
         }))
       })
@@ -40,24 +40,24 @@ class App extends Component {
   }
   }
   
-  // componentDidMount(){
-  //   axios.get(`https://tidal-hearing.glitch.me/recarga`)
-  //   .then((result)=>{
-  //     const carga = result.data;
-  //     this.setState({
-  //       recarga: carga.map((repo) => ({
-  //         valor: repo.amount,
-  //         bonus: repo.bonus_amount
-  //       }))
-  //     })
-  //   })
-  // }
+  componentDidMount(){
+    axios.get(`https://tidal-hearing.glitch.me/recarga`)
+    .then((result)=>{
+      const carga = result.data;
+      this.setState({
+        recarga: carga.map((repo) => ({
+          valor: `R$${repo.amount}`,
+          bonus: `E ganha ${repo.bonus_amount} de bônus`
+        }))
+      })
+    })
+  }
+  
   render(){
     return  <AppContent  
-              recarga={this.state.recarga} 
+              recarga={this.state.recarga}
               getRecarga={this.getRecarga('recarga')} 
               getDados={this.getDados('dados')} 
-
             />  
   }
 }

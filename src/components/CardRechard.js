@@ -48,8 +48,8 @@ const DivCardRechard = styled.div`
 const CardRechard = ({recarga}) => (
   <DivCardRechard>
     <ul>
-      <li>R${recarga.valor}</li>
-      <li>E ganha R${recarga.bonus} de bônus</li>
+      <li>{recarga.valor}</li>
+      <li>{recarga.bonus}</li>
     </ul>
     <a href="https://google.com">Contratar</a>
   </DivCardRechard>

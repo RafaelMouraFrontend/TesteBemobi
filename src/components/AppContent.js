@@ -53,13 +53,12 @@ const AppContent = ({recarga, getRecarga, getDados}) => (
           <CardGridRecharge>
           {recarga.map((repo, index)=>(
             <CardRechard recarga={repo}  key={index}/>  
-            ))}
+          ))}
                       
           </CardGridRecharge>
         </Main>
         <ButtonsGrid>
-          <Buttons getRecarga={getRecarga} />
-          <Buttons getDados={getDados}/>
+          <Buttons getRecarga={getRecarga} getDados={getDados}/>
         </ButtonsGrid>
       </ContainerRecharge>
       <ContainerPromo>
@@ -70,7 +69,5 @@ const AppContent = ({recarga, getRecarga, getDados}) => (
       </ContainerPromo>
   </DivApp>
 )
-
-
 
 export default AppContent
