@@ -48,7 +48,7 @@ class App extends Component {
       this.setState({
         recarga: carga.map((repo) => ({
           valor: `R$${repo.amount}`,
-          bonus: `E ganha ${repo.bonus_amount} de bônus`
+          bonus: `E ganhe ${repo.bonus_amount} de bônus`
         }))
       })
     })
